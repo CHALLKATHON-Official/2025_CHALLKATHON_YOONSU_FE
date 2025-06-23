@@ -62,3 +62,31 @@ window.addEventListener('DOMContentLoaded', () => {
     heart.classList.add('charged');
   }
 });
+
+
+
+function updateHeart() {
+  const total = Number(call.value) + Number(kakao.value) + Number(dm.value);
+  const percent = Math.min((total / 1200) * 100, 100).toFixed(1);
+
+  totalText.textContent = `총 연락 시간: ${total}분`;
+  percentText.textContent = `연락 퍼센트: ${percent}%`;
+
+  if (percent > 0) {
+    heart.classList.add('charged');
+    heart.src = "heart_on.png";   // 💗 충전된 하트
+  } else {
+    heart.classList.remove('charged');
+    heart.src = "heart_off.png";  // 🖤 기본 하트
+  }
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('show');
+}
+
+
+call.addEventListener('input', updateHeart);
+kakao.addEventListener('input', updateHeart);
+dm.addEventListener('input', updateHeart);

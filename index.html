@@ -83,45 +83,7 @@
     <p id="total">총 연락 시간: 0분</p>
   </div>
 
-  <script>
-    const call = document.getElementById('callTime');
-    const kakao = document.getElementById('kakaoTime');
-    const dm = document.getElementById('dmTime');
-    const target = document.getElementById('targetTime');
-    const heart = document.getElementById('heart');
-    const percentText = document.getElementById('percent');
-    const totalText = document.getElementById('total');
-    const resetBtn = document.getElementById('resetBtn');
-
-    function updateHeart() {
-      const total = Number(call.value) + Number(kakao.value) + Number(dm.value);
-      const base = Number(target.value) || 1200;
-      const percent = Math.min((total / base) * 100, 100).toFixed(1);
-
-      totalText.textContent = `총 연락 시간: ${total}분`;
-      percentText.textContent = `연락 퍼센트: ${percent}%`;
-
-      const scale = 1 + (percent / 100) * 0.3;
-      heart.style.transform = `scale(${scale})`;
-
-      if (percent > 0) {
-        heart.classList.add('charged');
-      } else {
-        heart.classList.remove('charged');
-      }
-    }
-
-    [call, kakao, dm, target].forEach(input => {
-      input.addEventListener('input', updateHeart);
-    });
-
-    resetBtn.addEventListener('click', () => {
-      call.value = 0;
-      kakao.value = 0;
-      dm.value = 0;
-      target.value = 1200;
-      updateHeart();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>

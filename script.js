@@ -75,7 +75,7 @@ function updateHeart() {
   if (percent > 0) {
     heart.classList.add('charged');
     heart.src = "heart_on.png";   // 💗 충전된 하트
-  } else {
+  } else {gi
     heart.classList.remove('charged');
     heart.src = "heart_off.png";  // 🖤 기본 하트
   }

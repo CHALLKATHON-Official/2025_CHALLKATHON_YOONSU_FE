@@ -57,6 +57,9 @@
   <label>디엠창에 있었던 시간 (분)</label>
   <input type="number" id="dmTime" value="0">
 
+  <label>하루 목표 연락 시간 (분)</label>
+  <input type="number" id="targetTime" value="1200">
+
   <div class="result">
     <div id="heart" class="heart">❤️</div>
     <p id="percent">연락 퍼센트: 0%</p>
@@ -67,22 +70,22 @@
     const call = document.getElementById('callTime');
     const kakao = document.getElementById('kakaoTime');
     const dm = document.getElementById('dmTime');
+    const target = document.getElementById('targetTime');
     const heart = document.getElementById('heart');
     const percentText = document.getElementById('percent');
     const totalText = document.getElementById('total');
 
     function updateHeart() {
       const total = Number(call.value) + Number(kakao.value) + Number(dm.value);
-      const percent = Math.min((total / 1200) * 100, 100).toFixed(1);
+      const base = Number(target.value) || 1200;
+      const percent = Math.min((total / base) * 100, 100).toFixed(1);
 
       totalText.textContent = `총 연락 시간: ${total}분`;
       percentText.textContent = `연락 퍼센트: ${percent}%`;
 
-      // 하트 크기 조절 (최대 1.3배)
       const scale = 1 + (percent / 100) * 0.3;
       heart.style.transform = `scale(${scale})`;
 
-      // 색상도 채움
       if (percent > 0) {
         heart.classList.add('charged');
       } else {
@@ -90,9 +93,9 @@
       }
     }
 
-    call.addEventListener('input', updateHeart);
-    kakao.addEventListener('input', updateHeart);
-    dm.addEventListener('input', updateHeart);
+    [call, kakao, dm, target].forEach(input => {
+      input.addEventListener('input', updateHeart);
+    });
   </script>
 </body>
 </html>

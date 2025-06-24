@@ -65,22 +65,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-function updateHeart() {
-  const total = Number(call.value) + Number(kakao.value) + Number(dm.value);
-  const percent = Math.min((total / 1200) * 100, 100).toFixed(1);
-
-  totalText.textContent = `총 연락 시간: ${total}분`;
-  percentText.textContent = `연락 퍼센트: ${percent}%`;
-
-  if (percent > 0) {
-    heart.classList.add('charged');
-    heart.src = "heart_on.png";   // 💗 충전된 하트
-  } else {gi
-    heart.classList.remove('charged');
-    heart.src = "heart_off.png";  // 🖤 기본 하트
-  }
-}
-
 function toggleMenu() {
   const menu = document.getElementById('menu');
   menu.classList.toggle('show');
@@ -90,3 +74,42 @@ function toggleMenu() {
 call.addEventListener('input', updateHeart);
 kakao.addEventListener('input', updateHeart);
 dm.addEventListener('input', updateHeart);
+
+function loadWeeklyData() {
+  const record = JSON.parse(localStorage.getItem('lovecentage') || '{}');
+  const today = new Date();
+  const labels = [];
+  const data = [];
+
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    const key = date.toISOString().split('T')[0];
+
+    labels.push(key.slice(5)); // MM-DD 형식
+    data.push(record[key]?.percent ?? 0);
+  }
+
+  const ctx = document.getElementById('percentChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: '연락 퍼센트 (%)',
+        data: data,
+        borderColor: '#ff5b8b',
+        backgroundColor: '#ffc2d1',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true, max: 100 }
+      }
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', loadWeeklyData);

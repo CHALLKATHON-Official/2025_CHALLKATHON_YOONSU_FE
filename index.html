@@ -5,6 +5,7 @@
   <title>LoveCentage - 오늘의 연락 비율</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -54,6 +55,11 @@
       <p id="total">총 연락 시간: 0분</p>
     </div>
   </main>
+
+<section class="chart-area">
+  <h3>📊 최근 7일간 연락 퍼센트 변화</h3>
+  <canvas id="percentChart" width="320" height="200"></canvas>
+</section>
 
   <script src="script.js"></script>
 </body>

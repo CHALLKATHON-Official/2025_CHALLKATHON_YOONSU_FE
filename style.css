@@ -53,3 +53,7 @@ input {
   background-color: #e64980;
 }
 
+.chart-area {
+  margin-top: 3rem;
+  text-align: center;
+}

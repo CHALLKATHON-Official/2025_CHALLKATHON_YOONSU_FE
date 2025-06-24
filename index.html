@@ -2,34 +2,59 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>LoveCentage</title>
+  <title>LoveCentage - 오늘의 연락 비율</title>
   <link rel="stylesheet" href="style.css">
- 
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>💕 LoveCentage - 오늘의 연락 비율</h1>
 
-  <label>전화한 시간 (분)</label>
-  <input type="number" id="callTime" value="0">
+  <!-- 상단 네비게이션 -->
+  <header>
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <div class="logo">LoveCentage</div>
+    </div>
+  </header>
 
-  <label>카톡방에 있었던 시간 (분)</label>
-  <input type="number" id="kakaoTime" value="0">
+  <!-- 슬라이딩 메뉴 -->
+  <nav id="menu" class="menu">
+    <div class="close-btn" onclick="toggleMenu()">✕</div>
+    <a href="#">기념일</a>
+    <a href="#">스케줄</a>
+    <a href="#">로그인</a>
+  </nav>
 
-  <label>디엠창에 있었던 시간 (분)</label>
-  <input type="number" id="dmTime" value="0">
+  <!-- 메인 콘텐츠 -->
+  <main class="main-section">
+    <div class="text-side">
+      <h2>오늘의 연락 비율을 확인하세요!</h2>
+      <p>하루 중 얼마나 연락했는지 시각적으로 보여줍니다.<br>스케줄 공유와 하트 게이지도 함께!</p>
 
-  <label>하루 목표 연락 시간 (분)</label>
-  <input type="number" id="targetTime" value="1200">
+      <div class="form-box">
+        <label>📞 전화한 시간 (분)</label>
+        <input type="number" id="callTime" value="0" min="0">
 
-  <button id="resetBtn">입력값 초기화</button>
+        <label>💬 카톡방에 있었던 시간 (분)</label>
+        <input type="number" id="kakaoTime" value="0" min="0">
 
-  <div class="result">
-    <div id="heart" class="heart">❤️</div>
-    <p id="percent">연락 퍼센트: 0%</p>
-    <p id="total">총 연락 시간: 0분</p>
-  </div>
+        <label>하루 목표 연락 시간 (분)</label>
+        <input type="number" id="targetTime" value="1200">
+
+        <label>📩 디엠창에 있었던 시간 (분)</label>
+        <input type="number" id="dmTime" value="0" min="0">
+
+        <button id="resetBtn">입력값 초기화</button>
+
+      </div>
+    </div>
+
+    <div class="image-side">
+      <img id="heart" src="heart_off.png" alt="하트 이미지" />
+      <p id="percent">연락 퍼센트: 0%</p>
+      <p id="total">총 연락 시간: 0분</p>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
-
 </html>

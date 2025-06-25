@@ -53,6 +53,13 @@ input {
   background-color: #e64980;
 }
 
+#heart {
+  width: 30px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+
 .chart-area {
   margin-top: 3rem;
   text-align: center;

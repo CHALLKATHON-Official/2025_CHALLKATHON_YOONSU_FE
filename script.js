@@ -30,11 +30,18 @@ function updateHeart() {
   const scale = 1 + (percent / 100) * 0.3;
   heart.style.transform = `scale(${scale})`;
 
-  if (percent > 0) {
-    heart.classList.add('charged');
-  } else {
-    heart.classList.remove('charged');
-  }
+  let heartImg = "heart_0.png";
+if (percent > 0 && percent <= 33) {
+  heartImg = "heart_1.png";
+} else if (percent <= 66) {
+  heartImg = "heart_2.png";
+} else if (percent < 100) {
+  heartImg = "heart_3.png";
+} else {
+  heartImg = "heart_4.png";
+}
+heart.src = heartImg;
+
 
   saveToLocalStorage(total, percent);
 }

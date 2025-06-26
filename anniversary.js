@@ -53,6 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('show');  // 
+}
+
 // ✅ D-Day 계산 함수
 function calculateDday(dateString) {
   const today = new Date();

@@ -5,13 +5,11 @@
   <title>스케줄</title>
   <link rel="stylesheet" href="style.css">
 
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet"> 
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <!-- ✅ FullCalendar CDN 추가 -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 
-
-
-  <!-- ✅ script.js를 head에 defer로 불러오기 -->
-  <script src="script.js" defer></script>
+  
 </head>
 
 <body>
@@ -19,8 +17,6 @@
     <div class="navbar">
       <div class="menu-icon" onclick="toggleMenu()">☰</div>
       <a href="index.html" class="logo">LoveCentage</a>
-      <div class="nav-links">
-      </div>
     </div>
   </header>
 
@@ -32,34 +28,51 @@
     <a href="login.html">로그인</a>
   </nav>
 
+  <!-- ✅ 메인 콘텐츠 -->
   <main>
     <h2>🗓️ 스케줄 페이지</h2>
     <p>데이트 일정이나 중요한 계획을 여기에 기록해보세요!</p>
 
-    <section class="schedule-section">
-  <h2>🗓️ 스케줄 관리</h2>
+    <section class="form-section">
+      <form id="schedule-form">
+        <label for="schedule-title">제목</label>
+        <input type="text" id="schedule-title" required />
 
-  <div class="form-box">
-    <label>날짜</label>
-    <input type="date" id="scheduleDate">
-    <label>일정 내용</label>
-    <input type="text" id="scheduleContent" placeholder="예: 성수 데이트">
-    <button onclick="addSchedule()">추가</button>
-  </div>
+        <label for="schedule-date">날짜</label>
+        <input type="date" id="schedule-date" required />
 
-  <ul id="scheduleList" class="list-box"></ul>
-</section>
+        <label for="schedule-start-time">시작 시간</label>
+        <input type="time" id="schedule-start-time" required />
 
-<div id="calendar" style="max-width: 900px; margin: 2rem auto;"></div>
+        <label for="schedule-end-time">종료 시간</label>
+        <input type="time" id="schedule-end-time" required />
 
 
+        <label for="schedule-desc">설명</label>
+        <input type="text" id="schedule-desc" required />
+
+        <button type="submit">일정 추가</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h3>📋 등록된 일정</h3>
+      <ul id="schedule-list"></ul>
+    </section>
+
+    <section class="calendar-section">
+      <h3>📆 달력 보기</h3>
+      <div id="calendar"></div>
+    </section>
   </main>
+
+  <!-- ✅ 스크립트 파일 -->
+  <script src="schedule.js" defer></script>
 
   <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('show');
     }
   </script>
-  
 </body>
 </html>

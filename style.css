@@ -88,6 +88,8 @@ input {
   font-size: 20px;
   text-align: center;
   flex: 1;
+  text-decoration: none;
+  color: inherit;  
 }
 
 /* 로그인 링크 (오른쪽) */
@@ -254,3 +256,42 @@ input {
   font-size: 0.9rem;
   color: #888;
 }
+
+/* 기본 메뉴 스타일 */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* 화면 밖으로 숨김 */
+  width: 200px;
+  height: 100%;
+  background-color: #f8f8f8;
+  transition: left 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* 메뉴 열릴 때 */
+.menu.show {
+  left: 0;
+}
+
+/* 닫기 버튼 스타일 */
+.menu .close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <div class="logo">LoveCentage</div>
+      <a class="login-link" href="login.html">로그인</a>
+    </div>
+  </header>
+
+  <nav id="menu" class="menu">
+    <div class="close-btn" onclick="toggleMenu()">✕</div>
+    <a href="anniversary.html">기념일</a>
+    <a href="schedule.html">스케줄</a>
+    <a href="login.html">로그인</a>
+  </nav>
+
+  <main>
+    <h2>🔐 로그인 페이지</h2>
+    <p>기념일 등록, 연락 정보 저장을 위해 로그인 해주세요.</p>
+
+    <form class="form-box">
+      <label for="username">아이디</label>
+      <input type="text" id="username" />
+
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" />
+
+      <button id="loginBtn" type="submit">로그인</button>
+    </form>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

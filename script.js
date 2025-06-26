@@ -118,5 +118,4 @@ function loadWeeklyData() {
     }
   });
 }
-
 window.addEventListener('DOMContentLoaded', loadWeeklyData);

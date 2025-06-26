@@ -295,26 +295,78 @@ input {
   margin-left: auto;
 }
 
-.schedule-section {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: #fff0f5;
-  border-radius: 10px;
+/* FullCalendar 셀 내부 텍스트 줄바꿈 및 정렬 개선 */
+.fc .fc-daygrid-day-number {
+  font-size: 0.85rem;
+  padding: 2px 4px;
 }
 
-.list-box {
+.fc .fc-event-title {
+  font-size: 0.75rem;
+  white-space: normal;   /* ✅ 줄바꿈 허용 */
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+#calendar {
+  max-width: 900px;        /* ✅ 넓이 확장 */
+  margin: 2rem auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.list-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.list-section h3 {
+  color: #d63384;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#schedule-list {
   list-style: none;
   padding: 0;
-  margin-top: 1rem;
+  margin: 0;
 }
 
-.list-box li {
-  background: #ffe6f0;
-  margin: 0.5rem 0;
-  padding: 0.7rem;
-  border-radius: 6px;
+#schedule-list li {
+  background: #ffe6ef;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background 0.2s;
 }
+
+#schedule-list li:hover {
+  background: #ffd6e4;
+}
+
+#schedule-list li button {
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+#schedule-list li button:hover {
+  background-color: #e64960;
+}
+a

@@ -70,6 +70,25 @@ window.addEventListener('DOMContentLoaded', () => {
     heart.style.transform = `scale(${scale})`;
     heart.classList.add('charged');
   }
+  if (document.getElementById("calendar")) {
+  const calendarEl = document.getElementById("calendar");
+  const data = JSON.parse(localStorage.getItem("scheduleData") || "[]");
+
+  const events = data.map(item => ({
+    title: item.content,
+    start: item.date,
+    allDay: true
+  }));
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    locale: "ko",
+    events: events
+  });
+
+  calendar.render();
+}
+
 });
 
 
@@ -120,6 +139,7 @@ function loadWeeklyData() {
     }
   });
 }
+
 window.addEventListener('DOMContentLoaded', loadWeeklyData);
 
 function loadSchedules() {
@@ -158,7 +178,48 @@ function deleteSchedule(index) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  // 연락 퍼센트 (index.html)
+  const record = JSON.parse(localStorage.getItem('lovecentage') || '{}');
+  const todayData = record[getTodayKey()];
+  if (todayData && document.getElementById("total")) {
+    totalText.textContent = `총 연락 시간: ${todayData.total}분`;
+    percentText.textContent = `연락 퍼센트: ${todayData.percent}%`;
+    const scale = 1 + (todayData.percent / 100) * 0.3;
+    heart.style.transform = `scale(${scale})`;
+    heart.classList.add('charged');
+  }
+
+  // 연락 퍼센트 차트 (index.html)
+  if (document.getElementById("percentChart")) {
+    loadWeeklyData();
+  }
+
+  // 스케줄 리스트 (schedule.html)
   if (document.getElementById("scheduleList")) {
     loadSchedules();
   }
+
+  // 🔥 달력 로딩 (schedule.html)
+  if (document.getElementById("calendar")) {
+    const calendarEl = document.getElementById("calendar");
+    const data = JSON.parse(localStorage.getItem("scheduleData") || "[]");
+
+    const events = data.map(item => ({
+      title: item.content,
+      start: item.date,
+      allDay: true
+    }));
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+     initialView: "dayGridMonth",
+     locale: "ko",
+     height: 500,
+     events: events
+     });
+
+
+
+    calendar.render();
+  }
 });
+

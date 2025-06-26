@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <title>스케줄</title>
   <link rel="stylesheet" href="style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet"> 
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+
+
+  <!-- ✅ script.js를 head에 defer로 불러오기 -->
+  <script src="script.js" defer></script>
 </head>
+
 <body>
   <header>
     <div class="navbar">
@@ -17,9 +26,7 @@
 
   <nav id="menu" class="menu">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-
     <a href="index.html">홈</a>
-
     <a href="anniversary.html">기념일</a>
     <a href="schedule.html">스케줄</a>
     <a href="login.html">로그인</a>
@@ -43,6 +50,9 @@
   <ul id="scheduleList" class="list-box"></ul>
 </section>
 
+<div id="calendar" style="max-width: 900px; margin: 2rem auto;"></div>
+
+
   </main>
 
   <script>
@@ -51,6 +61,5 @@
     }
   </script>
   
-  <script src="script.js"></script>
 </body>
 </html>

@@ -120,7 +120,6 @@ function loadWeeklyData() {
     }
   });
 }
-
 window.addEventListener('DOMContentLoaded', loadWeeklyData);
 
 function loadSchedules() {

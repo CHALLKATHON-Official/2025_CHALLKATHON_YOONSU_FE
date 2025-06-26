@@ -58,6 +58,11 @@ function toggleMenu() {
   menu.classList.toggle('show');  // 
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3d3b936 (최신 작업 반영)
 // ✅ D-Day 계산 함수
 function calculateDday(dateString) {
   const today = new Date();

@@ -11,22 +11,15 @@
       <div class="menu-icon" onclick="toggleMenu()">☰</div>
       <a href="index.html" class="logo">LoveCentage</a>
       <div class="nav-links">
-<<<<<<< HEAD
-=======
-        <a href="anniversary.html">기념일</a>
-        <a href="schedule.html">스케줄</a>
-        <a href="login.html">로그인</a>
->>>>>>> 3d3b936 (최신 작업 반영)
       </div>
     </div>
   </header>
 
   <nav id="menu" class="menu">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-<<<<<<< HEAD
+
     <a href="index.html">홈</a>
-=======
->>>>>>> 3d3b936 (최신 작업 반영)
+
     <a href="anniversary.html">기념일</a>
     <a href="schedule.html">스케줄</a>
     <a href="login.html">로그인</a>
@@ -35,6 +28,21 @@
   <main>
     <h2>🗓️ 스케줄 페이지</h2>
     <p>데이트 일정이나 중요한 계획을 여기에 기록해보세요!</p>
+
+    <section class="schedule-section">
+  <h2>🗓️ 스케줄 관리</h2>
+
+  <div class="form-box">
+    <label>날짜</label>
+    <input type="date" id="scheduleDate">
+    <label>일정 내용</label>
+    <input type="text" id="scheduleContent" placeholder="예: 성수 데이트">
+    <button onclick="addSchedule()">추가</button>
+  </div>
+
+  <ul id="scheduleList" class="list-box"></ul>
+</section>
+
   </main>
 
   <script>
@@ -42,10 +50,7 @@
       document.getElementById('menu').classList.toggle('show');
     }
   </script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
-<<<<<<< HEAD
-v
-=======
-v
->>>>>>> 3d3b936 (최신 작업 반영)

@@ -121,3 +121,44 @@ function loadWeeklyData() {
   });
 }
 window.addEventListener('DOMContentLoaded', loadWeeklyData);
+
+function loadSchedules() {
+  const list = document.getElementById("scheduleList");
+  const data = JSON.parse(localStorage.getItem("scheduleData") || "[]");
+
+  list.innerHTML = "";
+  data.sort((a, b) => new Date(a.date) - new Date(b.date));
+  data.forEach((item, idx) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${item.date} - ${item.content}
+      <button onclick="deleteSchedule(${idx})">삭제</button>`;
+    list.appendChild(li);
+  });
+}
+
+function addSchedule() {
+  const date = document.getElementById("scheduleDate").value;
+  const content = document.getElementById("scheduleContent").value;
+  if (!date || !content) return alert("날짜와 일정을 모두 입력하세요.");
+
+  const data = JSON.parse(localStorage.getItem("scheduleData") || "[]");
+  data.push({ date, content });
+  localStorage.setItem("scheduleData", JSON.stringify(data));
+
+  document.getElementById("scheduleDate").value = "";
+  document.getElementById("scheduleContent").value = "";
+  loadSchedules();
+}
+
+function deleteSchedule(index) {
+  const data = JSON.parse(localStorage.getItem("scheduleData") || "[]");
+  data.splice(index, 1);
+  localStorage.setItem("scheduleData", JSON.stringify(data));
+  loadSchedules();
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("scheduleList")) {
+    loadSchedules();
+  }
+});

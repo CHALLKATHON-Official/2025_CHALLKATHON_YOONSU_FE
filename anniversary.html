@@ -51,6 +51,22 @@
         </li>
       </ul>
     </section>
+
+    <!-- 📤 공유 코드 등록 -->
+    <section class="share-save">
+      <h3>📤 내 기념일 공유하기</h3>
+      <input type="text" id="myShareCodeInput" placeholder="내 공유 코드 생성 (예: LOVE123)">
+      <button onclick="registerMyShareCode()">등록</button>
+    </section>
+
+    <!-- 💞 공유 코드 불러오기 -->
+    <section class="share-section">
+      <h3>💞 공유 기념일 불러오기</h3>
+      <input type="text" id="shareCodeInput" placeholder="상대방의 공유 코드">
+      <button onclick="loadSharedAnniversaries()">불러오기</button>
+    </section>
+
+
   </main>
 
   <footer>

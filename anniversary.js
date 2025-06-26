@@ -68,3 +68,39 @@ function calculateDday(dateString) {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
   return diffDays === 0 ? 'D-DAY' : (diffDays > 0 ? `D-${diffDays}` : `D+${Math.abs(diffDays)}`);
 }
+
+// 📤 공유 코드 등록 (내 기념일을 shared_CODE로 저장)
+function registerMyShareCode() {
+  const code = document.getElementById("myShareCodeInput").value.trim();
+  if (!code) return alert("공유 코드를 입력해주세요.");
+
+  const data = JSON.parse(localStorage.getItem("anniversaries") || "[]");
+  localStorage.setItem("shared_" + code, JSON.stringify(data));
+  alert(`✅ 공유 코드로 등록 완료!\n코드: ${code}`);
+}
+
+// 💞 공유 코드 불러오기 (상대방의 shared_CODE에서 가져오기)
+function loadSharedAnniversaries() {
+  const code = document.getElementById("shareCodeInput").value.trim();
+  if (!code) return alert("공유 코드를 입력해주세요.");
+
+  const shared = localStorage.getItem("shared_" + code);
+  if (!shared) return alert("❌ 해당 공유 코드를 찾을 수 없습니다.");
+
+  const list = JSON.parse(shared);
+  const existing = JSON.parse(localStorage.getItem("anniversaries") || "[]");
+
+  // 중복 제거 + 💞 표시 추가
+  list.forEach(item => {
+    const alreadyExists = existing.some(e => e.title === item.title && e.date === item.date);
+    if (!alreadyExists) {
+      existing.push({
+        title: item.title + " 💞",
+        date: item.date
+      });
+    }
+  });
+
+  localStorage.setItem("anniversaries", JSON.stringify(existing));
+  loadAnniversaries();  // UI 업데이트
+}

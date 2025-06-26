@@ -1,17 +1,23 @@
-<body>
-
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <title>기념일</title>
-  <link rel="stylesheet" href="style.css"> <!-- ✅ 여기 추가 -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
   <!-- 상단 네비게이션 바 (공통) -->
-  <header class="navbar">
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <div class="logo">LoveCentage</div>
-    <a class="login-link" href="login.html">로그인</a>
+  <header>
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <a href="index.html" class="logo">LoveCentage</a>
+      <div class="nav-links">
+        <a href="anniversary.html">기념일</a>
+        <a href="schedule.html">스케줄</a>
+        <a href="login.html">로그인</a>
+      </div>
+    </div>
   </header>
 
   <!-- 슬라이딩 메뉴 -->
@@ -23,11 +29,10 @@
     <a href="login.html">로그인</a>
   </nav>
 
-  <!-- 메인 섹션: 기념일 폼 및 리스트 -->
+  <!-- 메인 섹션 -->
   <main class="anniversary-page">
     <h2>🎉 기념일을 기록하세요</h2>
 
-    <!-- 기념일 추가 폼 -->
     <section class="form-section">
       <form id="anniversary-form">
         <label for="title">기념일 제목</label>
@@ -40,18 +45,15 @@
       </form>
     </section>
 
-    <!-- 등록된 기념일 목록 -->
     <section class="list-section">
-  <h3>📅 등록된 기념일</h3>
-  <ul id="anniversary-list">
-    <!-- 예시 -->
-    <li>
-      <span>🎂 생일 - 2025-07-15</span>
-      <button class="delete-btn">삭제</button>
-    </li>
-  </ul>
-</section>
-
+      <h3>📅 등록된 기념일</h3>
+      <ul id="anniversary-list">
+        <li>
+          <span>🎂 생일 - 2025-07-15</span>
+          <button class="delete-btn">삭제</button>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <footer>
@@ -60,3 +62,4 @@
 
   <script src="anniversary.js"></script>
 </body>
+</html>

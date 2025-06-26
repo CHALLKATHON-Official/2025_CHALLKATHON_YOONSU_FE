@@ -134,3 +134,123 @@ input {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* 기념일 페이지 전용 스타일 */
+.anniversary-page {
+  max-width: 600px;
+  margin: 3rem auto;
+  background-color: #fff5fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+.anniversary-page h2 {
+  color: #d63384;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-section label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.form-section input[type="text"],
+.form-section input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.form-section button {
+  display: block;
+  width: 100%;
+  background-color: #f783ac;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-section button:hover {
+  background-color: #e64980;
+}
+
+.list-section {
+  margin-top: 2rem;
+}
+
+.list-section h3 {
+  margin-bottom: 1rem;
+  color: #d63384;
+}
+
+#anniversary-list {
+  list-style: none;
+  padding: 0;
+}
+
+#anniversary-list li {
+  background: #ffe6ef;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 등록된 기념일 목록 스타일 */
+#anniversary-list li {
+  background: #ffe6ef;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+#anniversary-list li:hover {
+  background: #ffd3e0;
+}
+
+#anniversary-list li span {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.delete-btn {
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #e64960;
+}
+
+#anniversary-list li span {
+  font-weight: bold;
+}
+
+#anniversary-list li span::after {
+  content: attr(data-dday);
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}

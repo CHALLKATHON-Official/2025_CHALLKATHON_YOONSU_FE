@@ -7,17 +7,22 @@ const percentText = document.getElementById('percent');
 const totalText = document.getElementById('total');
 const resetBtn = document.getElementById('resetBtn');
 
-function getTodayKey() {
-  const today = new Date();
-  return today.toISOString().split('T')[0];
+function getSelectedDateKey() {
+  const dateInput = document.getElementById('contactDate');
+  if (!dateInput || !dateInput.value) {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  }
+  return dateInput.value;
 }
 
 function saveToLocalStorage(total, percent) {
-  const key = getTodayKey();
+  const key = getSelectedDateKey();
   const record = JSON.parse(localStorage.getItem('lovecentage') || '{}');
   record[key] = { total, percent };
   localStorage.setItem('lovecentage', JSON.stringify(record));
 }
+
 
 function updateHeart() {
   const total = Number(call.value) + Number(kakao.value) + Number(dm.value);
@@ -31,26 +36,19 @@ function updateHeart() {
   heart.style.transform = `scale(${scale})`;
 
   let heartImg = "heart_0.png";
-if (percent === 0) {
-  heartImg = "heart_0.png";
-} else if (percent <= 33) {
-  heartImg = "heart_1.png";
-} else if (percent <= 66) {
-  heartImg = "heart_2.png";
-} else if (percent < 100) {
-  heartImg = "heart_3.png";
-} else {
-  heartImg = "heart_4.png";
-}
-heart.src = heartImg;
-
+  if (percent === 0) heartImg = "heart_0.png";
+  else if (percent <= 33) heartImg = "heart_1.png";
+  else if (percent <= 66) heartImg = "heart_2.png";
+  else if (percent < 100) heartImg = "heart_3.png";
+  else heartImg = "heart_4.png";
+  heart.src = heartImg;
 
   saveToLocalStorage(total, percent);
 }
 
-[call, kakao, dm, target].forEach(input => {
-  input.addEventListener('input', updateHeart);
-});
+const saveBtn = document.getElementById('saveBtn');
+saveBtn.addEventListener('click', updateHeart);
+
 
 resetBtn.addEventListener('click', () => {
   call.value = 0;
@@ -63,6 +61,27 @@ resetBtn.addEventListener('click', () => {
 window.addEventListener('DOMContentLoaded', () => {
   const record = JSON.parse(localStorage.getItem('lovecentage') || '{}');
   const todayData = record[getTodayKey()];
+
+   if (dateInput) {
+    dateInput.addEventListener('change', () => {
+      const record = JSON.parse(localStorage.getItem('lovecentage') || '{}');
+      const todayData = record[getSelectedDateKey()];
+      if (todayData) {
+        const total = Number(todayData.total);
+        const base = 1200;
+        const percent = (total / base) * 100;
+
+        totalText.textContent = `총 연락 시간: ${total}분`;
+        percentText.textContent = `연락 퍼센트: ${percent.toFixed(1)}%`;
+        heart.style.transform = `scale(${1 + (percent / 100) * 0.3})`;
+      } else {
+        totalText.textContent = `총 연락 시간: 0분`;
+        percentText.textContent = `연락 퍼센트: 0%`;
+        heart.style.transform = 'scale(1)';
+      }
+    });
+  }
+
   if (todayData) {
     totalText.textContent = `총 연락 시간: ${todayData.total}분`;
     percentText.textContent = `연락 퍼센트: ${todayData.percent}%`;

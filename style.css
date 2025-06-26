@@ -23,6 +23,15 @@ input {
   width: 200px;
 }
 
+/* 날짜 선택 인풋 */
+#contactDate {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
 .result {
   margin-top: 2rem;
   text-align: center;
@@ -47,6 +56,21 @@ input {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+}
+
+#saveBtn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #d63384;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+#saveBtn:hover {
+  background-color: #b52e6b;
 }
 
 #resetBtn:hover {
@@ -369,4 +393,3 @@ input {
 #schedule-list li button:hover {
   background-color: #e64960;
 }
-a

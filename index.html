@@ -30,9 +30,11 @@
   <main class="main-section">
     <div class="text-side">
       <h2>오늘의 연락 비율을 확인하세요!</h2>
-      <p>하루 중 얼마나 연락했는지 시각적으로 보여줍니다.<br>스케줄 공유와 하트 게이지도 함께!</p>
 
       <div class="form-box">
+        <label>📅 날짜 선택</label>
+        <input type="date" id="contactDate" />
+
         <label>🎯 하루 목표 연락 시간 (분)</label>
         <input type="number" id="targetTime" value="0">
 
@@ -46,6 +48,7 @@
         <input type="number" id="dmTime" value="0" min="0">
 
         <button id="resetBtn">입력값 초기화</button>
+        <button id="saveBtn">저장</button>
 
       </div>
     </div>

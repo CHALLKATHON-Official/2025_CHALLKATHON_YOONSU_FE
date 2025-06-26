@@ -31,7 +31,9 @@ function updateHeart() {
   heart.style.transform = `scale(${scale})`;
 
   let heartImg = "heart_0.png";
-if (percent > 0 && percent <= 33) {
+if (percent === 0) {
+  heartImg = "heart_0.png";
+} else if (percent <= 33) {
   heartImg = "heart_1.png";
 } else if (percent <= 66) {
   heartImg = "heart_2.png";
